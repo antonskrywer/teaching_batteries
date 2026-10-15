@@ -1,0 +1,19 @@
+# RStudio / R
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+.Renviron
+
+# Ergebnisse der Batterien (personenbezogene Daten, nie committen)
+output/
+**/output/
+
+# renv (falls später genutzt)
+renv/library/
+renv/staging/
+
+# System / Nextcloud
+Desktop.ini
+.DS_Store
+Thumbs.db
