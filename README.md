@@ -47,3 +47,4 @@ remotes::install_github("klausfrieler/psyquest")
 - Admin-Passwörter stehen nicht im Code (öffentliches Repository), sondern
   kommen aus Umgebungsvariablen (`.Renviron`, nicht versioniert).
 - Ergebnisordner `output/` werden nie committet.
+- Deployment auf dem Dots-Server: siehe [DEPLOY.md](DEPLOY.md).
