@@ -1,0 +1,25 @@
+key;en
+TITLE;Effects of Audio on Mental Abilities
+CONSENT_HEAD;Welcome to the study Effects of Audio on Mental Abilities.
+CONSENT_P1;In this study you will first listen to an audio track (either music, speech or silence) for about 10 minutes.
+CONSENT_P2;Subsequently, you will be asked to complete a cognitive task for another 10 minutes.
+CONSENT_P3;In addition, we will ask you a few questions about your socio-demographic background.
+CONSENT_P4;Note that participating in this study is voluntary and that you can terminate the study at any point without any negative consequences.
+CONSENT_CHECK;I am at least 18 years of age and I am consenting to participate in this study voluntarily.
+CONSENT_FAILED;Please tick the box to confirm your consent.
+ID_PROMPT;In order to be able to relate your data from this study to data from other studies you need to create a unique but anonymous identifier.
+ID_INSTRUCTION;Please enter the last three letters of your mother's maiden name and the first two digits of your birthday in the box below. Example: Your mother's maiden name was "Smith" and you are born on "13.10.1995", you would enter "ith13".
+ID_PLACEHOLDER;e.g. ith13
+ID_INVALID;Please enter three letters followed by two digits (e.g. ith13).
+AUDIO_INSTRUCTION;Please listen to the following audio track. This will take about 10 minutes.
+COND_MUSIC;You are in the music condition.
+COND_SPEECH;You are in the speech condition.
+COND_SILENCE;You are in the silence condition.
+AUDIO_PLAYING;Please keep listening. The Next button will appear when the track has finished.
+SILENCE_WAITING;Please sit quietly. The Next button will appear after the waiting period.
+AUDIO_PLAY;Start audio
+TIME_LEFT;Time remaining:
+TASK_INSTRUCTION;Now you will complete a cognitive task. This will take about 10 minutes.
+MIQ_MISSING;[Placeholder: the MIQ package is not installed here. On the Dots server the adaptive MIQ test appears at this point.]
+NEXT;Next
+FINAL;Thank you for participating in this study. You can now close this window.

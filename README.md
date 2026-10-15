@@ -9,7 +9,7 @@ Musikpsychologie und kann im Seminar direkt durchgeführt und ausgewertet werden
 
 | Ordner | Studie | Status |
 |---|---|---|
-| [`mozart_effect/`](mozart_effect/) | Rauscher, Shaw & Ky (1993). Music and spatial task performance. *Nature, 365*, 611. | in Planung |
+| [`mozart_effect/`](mozart_effect/) | Rauscher, Shaw & Ky (1993). Music and spatial task performance. *Nature, 365*, 611. | bereit zum Testen |
 
 ## Aufbau
 

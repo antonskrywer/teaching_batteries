@@ -17,3 +17,6 @@ renv/staging/
 Desktop.ini
 .DS_Store
 Thumbs.db
+
+# Audiostimuli (Urheberrecht der Aufnahmen; liegen im Lab-Ordner bzw. auf dem Server)
+mozart_effect/www/audio/*.mp3
