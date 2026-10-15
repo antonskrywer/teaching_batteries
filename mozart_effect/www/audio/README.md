@@ -1,6 +1,6 @@
 # Audiostimuli
 
-Hier liegen die Tracks für die Audio-Seite (nicht im Repository, siehe `.gitignore`):
+Hier liegen die Tracks für die Audio-Seite:
 
 | Datei | Bedingung |
 |---|---|
