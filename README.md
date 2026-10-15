@@ -11,6 +11,13 @@ Musikpsychologie und kann im Seminar direkt durchgeführt und ausgewertet werden
 |---|---|---|
 | [`mozart_effect/`](mozart_effect/) | Rauscher, Shaw & Ky (1993). Music and spatial task performance. *Nature, 365*, 611. | bereit zum Testen |
 
+## Data Monitor
+
+[`monitor/`](monitor/) ist eine Shiny-App mit einem Überblick über die Daten
+aller Batterien (Metadaten, univariate und bivariate Verteilungen,
+CSV-Download), geschützt mit `TEACHING_ADMIN_PASSWORD`. Eine neue Batterie
+wird in `monitor/R/registry.R` eingetragen. Details: [monitor/README.md](monitor/README.md).
+
 ## Aufbau
 
 Jede Batterie liegt in einem eigenen Ordner und ist als eigenständige Shiny-App lauffähig:

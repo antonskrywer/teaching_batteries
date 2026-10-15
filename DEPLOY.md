@@ -102,6 +102,29 @@ sudo touch /srv/shiny-server/mozart_effect/restart.txt
 
 `--exclude output` sorgt dafür, dass erhobene Daten erhalten bleiben.
 
+## Data Monitor
+
+Der Monitor liest die Ergebnisse unter `/srv/shiny-server/<batterie>/output/results`
+(Standard `MONITOR_DATA_ROOT = ..`, also der Ordner über dem Monitor). Passwort
+ist `TEACHING_ADMIN_PASSWORD` aus Schritt 5. Pakete prüfen:
+
+```bash
+Rscript -e 'packageVersion("shiny"); packageVersion("bslib"); packageVersion("ggplot2")'
+```
+
+Erstes Deployment und Updates (nach `git pull` wie oben):
+
+```bash
+sudo rsync -a /srv/shiny-server/teaching_batteries/monitor/ /srv/shiny-server/teaching_monitor/
+sudo chown -R shiny:shiny /srv/shiny-server/teaching_monitor
+sudo touch /srv/shiny-server/teaching_monitor/restart.txt
+```
+
+Aufruf: `http://<Server>:3838/teaching_monitor/`
+
+Der Monitor braucht Lesezugriff auf die `output/`-Ordner der Batterien; das ist
+gegeben, solange beides dem Benutzer `shiny` gehört.
+
 ## Fehlersuche
 
 App zeigt „An error has occurred":
