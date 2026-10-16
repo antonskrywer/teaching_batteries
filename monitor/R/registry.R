@@ -49,7 +49,10 @@ batteries <- list(
       new_variable("miq_ability", "MIQ ability", "MIQ", "ability", "numeric"),
       new_variable("pft_score", "PFT score (0–20)", "PFT", "score", "numeric"),
       new_variable("gender", "Gender", "DEG", "Gender", "categorical", deg_gender),
-      new_variable("age", "Age (years)", "DEG", "Age", "numeric", deg_age_years)
+      new_variable("age", "Age (years)", "DEG", "Age", "numeric", deg_age_years),
+      new_variable("country_formative", "Country (formative years)", "DEG", "Country Formative Years", "categorical"),
+      new_variable("first_language", "First language", "DEG", "First Language", "categorical"),
+      new_variable("second_language", "Second language", "DEG", "Second Language", "categorical")
     ),
     simulate = function(n = 60, seed = 1) {
       set.seed(seed)
@@ -68,6 +71,12 @@ batteries <- list(
                              pmin(20, pmax(0, round(rnorm(n, 11 + 2 * effect, 3.5)))), NA),
         gender      = deg_gender(sample(1:4, n, replace = TRUE, prob = c(0.55, 0.38, 0.04, 0.03))),
         age         = pmax(18, round(rnorm(n, 24, 3.5))),
+        country_formative = factor(sample(c("DE", "AT", "TR", "PL", "US"), n, replace = TRUE,
+                                          prob = c(0.75, 0.08, 0.07, 0.05, 0.05))),
+        first_language    = factor(sample(c("de", "tr", "pl", "en"), n, replace = TRUE,
+                                          prob = c(0.8, 0.08, 0.06, 0.06))),
+        second_language   = factor(sample(c("en", "fr", "es", "de"), n, replace = TRUE,
+                                          prob = c(0.7, 0.12, 0.1, 0.08))),
         stringsAsFactors = FALSE
       )
     }
