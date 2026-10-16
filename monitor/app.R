@@ -11,7 +11,7 @@
 #
 # Umgebungsvariablen:
 #   TEACHING_ADMIN_PASSWORD  Passwort (ohne Variable bleibt der Monitor gesperrt)
-#   MONITOR_DATA_ROOT        Ordner, in dem die Batterien liegen (Standard:
+#   TEACHING_DATA_ROOT       Ordner, in dem die Batterien liegen (Standard:
 #                            /srv/shiny-server, falls vorhanden, sonst ".." =
 #                            Ordner über dem Monitor, für lokale Tests)
 # Ohne Ergebnisse zeigt der Monitor Demodaten.
@@ -20,7 +20,7 @@
 library(shiny)
 library(bslib)
 
-data_root      <- Sys.getenv("MONITOR_DATA_ROOT",
+data_root      <- Sys.getenv("TEACHING_DATA_ROOT",
                             unset = if (dir.exists("/srv/shiny-server")) "/srv/shiny-server" else "..")
 admin_password <- Sys.getenv("TEACHING_ADMIN_PASSWORD")
 

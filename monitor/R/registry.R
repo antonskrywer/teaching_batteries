@@ -6,7 +6,7 @@
 # ("numeric" oder "categorical") und optional eine Umrechnung.
 #
 #   link         Link zur Studie
-#   results_dir  Ergebnisordner relativ zu MONITOR_DATA_ROOT
+#   results_dir  Ergebnisordner relativ zu TEACHING_DATA_ROOT
 #   instruments  gemessene Konstrukte (für die Metadaten-Seite)
 #   variables    angezeigte Variablen
 #   simulate     Demodaten, solange es keine echten Ergebnisse gibt

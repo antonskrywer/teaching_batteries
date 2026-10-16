@@ -17,7 +17,7 @@ shiny::runApp("monitor")                     # Arbeitsverzeichnis = Projektwurze
 | Variable | Bedeutung |
 |---|---|
 | `TEACHING_ADMIN_PASSWORD` | Passwort (dasselbe wie das Admin-Passwort der Batterien). Ohne Variable ist der Monitor gesperrt |
-| `MONITOR_DATA_ROOT` | Ordner, in dem die Batterien liegen. Standard: `/srv/shiny-server`, falls vorhanden (egal, wo der Monitor selbst liegt), sonst `..` (Ordner über dem Monitor, für lokale Tests) |
+| `TEACHING_DATA_ROOT` | Ordner, in dem die Batterien liegen. Standard: `/srv/shiny-server`, falls vorhanden (egal, wo der Monitor selbst liegt), sonst `..` (Ordner über dem Monitor, für lokale Tests). Eigener Name, damit Variablen anderer Apps auf dem Server (z. B. `MONITOR_DATA_ROOT`) nicht greifen |
 
 Gibt es für eine Batterie noch keine Ergebnisse, zeigt der Monitor Demodaten
 und weist darauf hin.
