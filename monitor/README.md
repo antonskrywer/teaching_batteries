@@ -17,7 +17,7 @@ shiny::runApp("monitor")                     # Arbeitsverzeichnis = Projektwurze
 | Variable | Bedeutung |
 |---|---|
 | `TEACHING_ADMIN_PASSWORD` | Passwort (dasselbe wie das Admin-Passwort der Batterien). Ohne Variable ist der Monitor gesperrt |
-| `MONITOR_DATA_ROOT` | Ordner, in dem die Batterien liegen. Standard: `..` (Ordner über dem Monitor), auf dem Server also `/srv/shiny-server` |
+| `MONITOR_DATA_ROOT` | Ordner, in dem die Batterien liegen. Standard: `/srv/shiny-server`, falls vorhanden (egal, wo der Monitor selbst liegt), sonst `..` (Ordner über dem Monitor, für lokale Tests) |
 
 Gibt es für eine Batterie noch keine Ergebnisse, zeigt der Monitor Demodaten
 und weist darauf hin.
@@ -59,3 +59,14 @@ Beispiel Mozart-Effekt:
 | MIQ ability | `MIQ$ability` | metrisch |
 | Gender | `DEG$Gender` (Code 1–4 → female, male, diverse, rather not say) | kategorial |
 | Age (years) | `DEG$Age` (Monate → volle Jahre) | metrisch |
+
+## Batterien im Monitor
+
+| Batterie | Ergebnisordner auf dem Server | Variablen |
+|---|---|---|
+| Mozart effect (Rauscher et al., 1993) | `/srv/shiny-server/mozart_effect/output/results` | Listening condition, MIQ ability, Gender, Age |
+| Personality and musical preferences ([Ruth & Müllensiefen, 2020](https://psycnet.apa.org/record/2020-68799-001)) | `/srv/shiny-server/ruth_mullensiefen_2020/output/results` | MUS: Mellow, Unpretentious, Sophisticated, Intense, Contemporary (1–9) · TPI: Big Five (1–7) · GMS: General und fünf Subskalen (1–7) · Gender, Age |
+
+Die Batterie von Ruth & Müllensiefen liegt nicht in diesem Repository, nur
+auf dem Server. Aus dem Gold-MSI fehlen bewusst die Einzelitems Instrument,
+Start Age und Absolute Pitch.

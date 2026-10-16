@@ -105,7 +105,7 @@ sudo touch /srv/shiny-server/mozart_effect/restart.txt
 ## Data Monitor
 
 Der Monitor liest die Ergebnisse unter `/srv/shiny-server/<batterie>/output/results`
-(Standard `MONITOR_DATA_ROOT = ..`, also der Ordner über dem Monitor). Passwort
+(Standard für `MONITOR_DATA_ROOT`, egal in welchem Unterordner der Monitor liegt). Passwort
 ist `TEACHING_ADMIN_PASSWORD` aus Schritt 5. Pakete prüfen:
 
 ```bash

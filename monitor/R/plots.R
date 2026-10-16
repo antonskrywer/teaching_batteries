@@ -151,6 +151,7 @@ bi_test <- function(d, x, y, kind) {
   n <- nrow(d)
   if (kind == "scatter") {
     if (n < 4) return(paste0("Too few complete pairs for a correlation (n = ", n, ")."))
+    if (stats::sd(d[[x]]) == 0 || stats::sd(d[[y]]) == 0) return("No correlation: one variable has the same value in all sessions.")
     ct <- stats::cor.test(d[[x]], d[[y]])
     return(sprintf("Pearson r(%d) = %s, 95%% CI [%s, %s], %s, n = %d.",
                    as.integer(ct$parameter), fmt_r(ct$estimate), fmt_r(ct$conf.int[1]),
