@@ -65,7 +65,7 @@ Beispiel Mozart-Effekt:
 | Batterie | Ergebnisordner auf dem Server | Variablen |
 |---|---|---|
 | Mozart effect (Rauscher et al., 1993) | `/srv/shiny-server/mozart_effect/output/results` | Listening condition, MIQ ability, Gender, Age |
-| Personality and musical preferences ([Ruth & Müllensiefen, 2020](https://psycnet.apa.org/record/2020-68799-001)) | `/srv/shiny-server/ruth_mullensiefen_2020/output/results` | MUS: Mellow, Unpretentious, Sophisticated, Intense, Contemporary (1–9) · TPI: Big Five (1–7) · GMS: General und fünf Subskalen (1–7) · Gender, Age |
+| Personality and musical preferences ([Ruth & Müllensiefen, 2020](https://psycnet.apa.org/record/2020-68799-001)) | `/srv/shiny-server/ruth_muellensiefen_2020/output/results` | MUS: Mellow, Unpretentious, Sophisticated, Intense, Contemporary (1–9) · TPI: Big Five (1–7) · GMS: General und fünf Subskalen (1–7) · Gender, Age |
 
 Die Batterie von Ruth & Müllensiefen liegt nicht in diesem Repository, nur
 auf dem Server. Aus dem Gold-MSI fehlen bewusst die Einzelitems Instrument,

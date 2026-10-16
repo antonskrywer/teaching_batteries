@@ -64,12 +64,12 @@ batteries <- list(
     }
   ),
 
-  ruth_mullensiefen_2020 = list(
+  ruth_muellensiefen_2020 = list(
     label       = "Personality and musical preferences",
     study       = "Ruth, N., & Müllensiefen, D. (2020). Associations between musical preferences and personality in female secondary school students. Psychomusicology: Music, Mind, and Brain, 30(4), 202–211.",
     link        = "https://psycnet.apa.org/record/2020-68799-001",
     design      = "Correlational design: musical preferences (MUSIC model), Big Five personality traits (TIPI) and musical sophistication (Gold-MSI) in one session.",
-    results_dir = "ruth_mullensiefen_2020/output/results",
+    results_dir = "ruth_muellensiefen_2020/output/results",
     instruments = data.frame(
       Construct   = c("Musical preferences (MUS)", "Personality (TPI)",
                       "Musical sophistication (GMS)", "Demographics (DEG)"),
