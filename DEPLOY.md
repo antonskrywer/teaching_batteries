@@ -22,11 +22,22 @@ sudo git clone https://github.com/antonskrywer/teaching_batteries.git
 ### 3. Pakete prüfen *(harmlos, nur lesen)*
 
 ```bash
-Rscript -e 'packageVersion("psychTestR"); packageVersion("psyquest"); packageVersion("MIQ"); args(MIQ::MIQ)'
+Rscript -e 'packageVersion("psychTestR"); packageVersion("psyquest"); packageVersion("MIQ"); args(MIQ::MIQ); packageVersion("PFT")'
 ```
 
-Erwartet: drei Versionsnummern, und `args(MIQ::MIQ)` enthält `num_items`,
+Erwartet: vier Versionsnummern, und `args(MIQ::MIQ)` enthält `num_items`,
 `take_training`, `with_welcome`, `with_finish` und `feedback`.
+
+Fehlt `PFT` (Paper Folding Test, für `mozart_effect`), installieren bzw. nach
+Änderungen am PFT aktualisieren (systemweit, damit der Benutzer `shiny` es
+findet; wie bei den anderen Paketen auf dem Server):
+
+```bash
+sudo Rscript -e 'remotes::install_github("antonskrywer/PFT", upgrade = "never")'
+```
+
+`upgrade = "never"` verhindert, dass dabei psychTestR o. Ä. aktualisiert wird
+und laufende Studien beeinflusst.
 
 ### 4. App in einen eigenen Ordner kopieren *(harmlos)*
 
@@ -62,15 +73,18 @@ sudo touch /srv/shiny-server/mozart_effect/restart.txt
 ### 7. Im Browser ausprobieren
 
 ```
-http://<Server>:3838/mozart_effect/?condition=music
-http://<Server>:3838/mozart_effect/?condition=speech
+http://<Server>:3838/mozart_effect/?condition=music&test=miq
+http://<Server>:3838/mozart_effect/?condition=speech&test=pft
 http://<Server>:3838/mozart_effect/?condition=silence
-http://<Server>:3838/mozart_effect/            (zufällige Bedingung)
+http://<Server>:3838/mozart_effect/?test=pft
+http://<Server>:3838/mozart_effect/            (balancierte Zuweisung)
 ```
 
-Ein Durchlauf dauert rund 20 Minuten (Audio und MIQ). Prüfen: Audio startet
+Ein Durchlauf dauert rund 20 Minuten (Audio und Test). Prüfen: Audio startet
 von selbst, Restzeit läuft, „Next" erscheint erst am Ende, danach MIQ mit
-Instruktion und 12 Items.
+Instruktion und 12 Items bzw. PFT mit Instruktion, Beispiel-Item und
+6-Minuten-Countdown. Alle Testläufe zählen für die Balancierung mit, deshalb
+vor der Erhebung Schritt 9 ausführen.
 
 ### 8. Ergebnisse prüfen
 
@@ -89,7 +103,9 @@ Nur ausführen, wenn noch keine echten Teilnehmenden dabei waren:
 sudo rm -rf /srv/shiny-server/mozart_effect/output
 ```
 
-Der Ordner wird beim nächsten Durchlauf neu angelegt.
+Der Ordner wird beim nächsten Durchlauf neu angelegt. Damit wird auch das
+Zuweisungs-Log `output/assignments.csv` zurückgesetzt, die Balancierung
+beginnt wieder bei null.
 
 ## Updates
 

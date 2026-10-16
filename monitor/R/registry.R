@@ -29,34 +29,43 @@ batteries <- list(
     label       = "Mozart effect",
     study       = "Rauscher, F. H., Shaw, G. L., & Ky, K. N. (1993). Music and spatial task performance. Nature, 365(6447), 611.",
     link        = "https://doi.org/10.1038/365611a0",
-    design      = "Between-subjects design with three listening conditions (music, speech, silence; about 9 minutes each), followed by an adaptive matrix reasoning test (MIQ, 12 items).",
+    design      = "Between-subjects 3 x 2 design: three listening conditions (music, speech, silence; about 9 minutes each), followed by either an adaptive matrix reasoning test (MIQ, 12 items) or the Paper Folding Test (PFT, 20 items, 6 minutes). Both factors are assigned in balanced order.",
     results_dir = "mozart_effect/output/results",
     instruments = data.frame(
-      Construct   = c("Listening condition", "Matrix reasoning (MIQ)", "Demographics (DEG)"),
-      Instrument  = c("Experimental factor", "MIQ, adaptive, 12 items", "psyquest DEG"),
-      Measures    = c("music / speech / silence", "IRT ability estimate",
+      Construct   = c("Listening condition", "Cognitive test", "Matrix reasoning (MIQ)",
+                      "Spatial visualisation (PFT)", "Demographics (DEG)"),
+      Instrument  = c("Experimental factor", "Experimental factor", "MIQ, adaptive, 12 items",
+                      "Paper Folding Test (Vz-2-BRACE), 20 items, 6 min", "psyquest DEG"),
+      Measures    = c("music / speech / silence", "MIQ / PFT", "IRT ability estimate",
+                      "number correct (0–20)",
                       "age, gender, country, first and second language"),
       check.names = FALSE
     ),
     variables = list(
       new_variable("condition", "Listening condition", "setup", "condition", "categorical",
                    function(x) factor(x, levels = c("music", "speech", "silence"))),
+      new_variable("test", "Cognitive test", "setup", "test", "categorical",
+                   function(x) factor(x, levels = c("miq", "pft"))),
       new_variable("miq_ability", "MIQ ability", "MIQ", "ability", "numeric"),
+      new_variable("pft_score", "PFT score (0–20)", "PFT", "score", "numeric"),
       new_variable("gender", "Gender", "DEG", "Gender", "categorical", deg_gender),
       new_variable("age", "Age (years)", "DEG", "Age", "numeric", deg_age_years)
     ),
     simulate = function(n = 60, seed = 1) {
       set.seed(seed)
-      condition <- sample(c("music", "speech", "silence"), n, replace = TRUE)
+      condition <- rep_len(c("music", "speech", "silence"), n)
+      test      <- rep_len(rep(c("miq", "pft"), each = 3), n)
       complete  <- runif(n) > 0.12
+      effect    <- c(music = 0.25, speech = 0, silence = -0.05)[condition]
       data.frame(
         session     = sprintf("demo_%03d", seq_len(n)),
         time        = as.POSIXct("2026-10-20 10:00") + sort(sample(0:(21 * 86400), n)),
         complete    = complete,
         condition   = factor(condition, levels = c("music", "speech", "silence")),
-        miq_ability = ifelse(complete,
-                             round(rnorm(n, c(music = 0.25, speech = 0, silence = -0.05)[condition], 0.9), 2),
-                             NA),
+        test        = factor(test, levels = c("miq", "pft")),
+        miq_ability = ifelse(complete & test == "miq", round(rnorm(n, effect, 0.9), 2), NA),
+        pft_score   = ifelse(complete & test == "pft",
+                             pmin(20, pmax(0, round(rnorm(n, 11 + 2 * effect, 3.5)))), NA),
         gender      = deg_gender(sample(1:4, n, replace = TRUE, prob = c(0.55, 0.38, 0.04, 0.03))),
         age         = pmax(18, round(rnorm(n, 24, 3.5))),
         stringsAsFactors = FALSE
